@@ -1,0 +1,30 @@
+.logo {
+  width: 175px;
+  margin: 10px 0 30px 0;
+}
+
+.btn {
+  width: 100%;
+  font-weight: 600;
+}
+
+.img1 {
+  flex-basis: 454px;
+  height: 618px;
+  float: right;
+}
+
+.content-login {
+  margin-top: 100px;
+  height: 777px;
+}
+
+.background-img {
+  position: absolute;
+  width: 454px;
+  height: 618px;
+  background-image: url(../images/1.png);
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  right: 0;
+}

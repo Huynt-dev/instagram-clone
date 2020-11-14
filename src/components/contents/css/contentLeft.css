@@ -1,0 +1,52 @@
+.content-left {
+  /* border: 2px solid darkblue; */
+}
+
+.avatar-left {
+  width: 32px;
+  height: 32px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-right: 15px;
+  background-color: black;
+}
+.title {
+  display: inline-block;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.menu-right .nav-link {
+  color: black;
+  font-size: 24px;
+  padding: 0 15px 15px 0;
+}
+
+.content-left-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white !important;
+}
+
+.content-left-bottom a {
+  font-weight: 600;
+}
+
+.content-left-bottom input {
+  background: none;
+  outline: none;
+  border: none;
+  word-break: break-all;
+}
+
+.content-left-bottom input:focus {
+  background: none;
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+.content-left-top {
+  background-color: white !important;
+}

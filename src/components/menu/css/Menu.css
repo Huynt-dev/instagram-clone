@@ -1,0 +1,41 @@
+.logo-2 {
+  width: 103px;
+}
+.menu-search {
+  width: 215px !important;
+  height: 28px !important;
+  margin: auto;
+  background-color: rgba(var(--b3f, 250, 250, 250), 1) !important;
+}
+
+.menu-search::placeholder {
+  text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .menu-search {
+    display: none;
+  }
+}
+
+.yolo {
+  height: 54px;
+}
+.menu-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-box .nav-link {
+  font-size: 22px;
+  color: black;
+}
+
+.avatar {
+  display: block;
+  width: 22px;
+  height: 22px;
+  background-color: black;
+  border-radius: 15px;
+}

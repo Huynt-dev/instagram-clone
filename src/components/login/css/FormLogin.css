@@ -1,0 +1,71 @@
+.box-login {
+  border: 1px solid #dbdbdb;
+  margin: auto;
+  padding: 20px 30px;
+  max-width: 350px;
+  min-width: 350px;
+  text-align: center;
+  height: auto;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+.box-dowload {
+  text-align: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+p {
+  margin: 0 !important;
+}
+@media only screen and (max-width: 991px) {
+  .img-box {
+    display: none;
+  }
+}
+
+.input-login {
+  display: inline-block;
+  text-align: start;
+  cursor: text;
+  font: 400 12.5px Arial !important;
+  box-sizing: border-box;
+  background: #fafafa;
+  border-style: inset;
+  border: 1px solid #dbdbdb;
+  border-image: initial;
+  color: #8e8e8e;
+}
+
+.of {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+.text {
+  position: relative;
+  margin: auto 20px;
+  font-weight: 600;
+  color: #8e8e8e;
+}
+.line {
+  width: 100%;
+  border-top: 2px solid #dbdbdb;
+}
+
+.login-facebook {
+  margin: 15px 0;
+  font-weight: 600;
+  color: #385185;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-download {
+  width: 136px;
+  height: 40px;
+  margin: 5px;
+}
