@@ -17,7 +17,7 @@ export default function ContentLeft() {
     const deletePost = async () => {
       try {
         const res = await axios.put(
-          `https://2i8yt.sse.codesandbox.io/posts/${postId}`
+          `https://1q6gt.sse.codesandbox.io/posts/${postId}`
         );
 
         alert("Like thanh cong");
@@ -32,7 +32,7 @@ export default function ContentLeft() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("https://2i8yt.sse.codesandbox.io/posts");
+        const res = await axios.get("https://1q6gt.sse.codesandbox.io/posts");
         if (res.data.posts) {
           setPosts(res.data.posts);
         }
