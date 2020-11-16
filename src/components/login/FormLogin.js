@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Button, Form, FormGroup, Input } from "reactstrap";
 import "./css/FormLogin.css";
-import axios from "axios";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSnowboarding } from "@fortawesome/free-solid-svg-icons";
+import callApi from "../../helpers/axios";
 
 const FormLogin = () => {
   const [user, setUser] = useState("");
@@ -28,18 +28,17 @@ const FormLogin = () => {
 
     try {
       setIsLoading(true);
-      const res = await axios.post(
-        "https://1q6gt.sse.codesandbox.io/users/login",
-        {
-          email: user,
-          password: password
-        }
-      );
-      const { token } = res.data;
+
+      const res = await callApi.post("/users/login", {
+        email: user,
+        password: password
+      });
+
+      const { token } = res;
       localStorage.setItem("token", token);
-      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+      callApi.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       history.push("/");
-    } catch (e) {
+    } catch (error) {
       setIsLoading(false);
       setError(
         "Rất tiếc, mật khẩu của bạn không đúng. Vui lòng kiểm tra lại mật khẩu."

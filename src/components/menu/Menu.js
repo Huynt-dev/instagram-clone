@@ -30,13 +30,11 @@ export default function NavMenu() {
     <Navbar color="white" light expand="md">
       <div className="container yolo">
         <Link to="/">
-          <NavbarBrand>
-            <img
-              className="logo-2"
-              alt="ok"
-              src="../images/instagram-logo-1.png"
-            />
-          </NavbarBrand>
+          <img
+            className="logo-2"
+            alt="ok"
+            src="../images/instagram-logo-1.png"
+          />
         </Link>
         <Collapse navbar>
           <input

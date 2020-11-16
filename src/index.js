@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import axios from "axios";
 import App from "./App";
+import callApi from "./helpers/axios";
 
 const setToken = () => {
   const token = localStorage.getItem("token");
 
   if (token) {
-    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    callApi.defaults.headers.common["Authorization"] = `Bearer ${token}`;
   }
 };
 

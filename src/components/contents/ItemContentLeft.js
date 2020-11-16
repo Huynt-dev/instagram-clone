@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import Context from "../contexts/context";
+import React from "react";
 import "./css/contentLeft.css";
 import { Link } from "react-router-dom";
 
@@ -24,7 +23,6 @@ export default function ItemContentLeft({
   data: { userPost, image, _id, totalLike, content },
   likePost
 }) {
-  // const { like, likePost } = useContext(Context);
   return (
     <Card className="mb-4">
       <CardHeader className="content-left-top text-muted">
@@ -39,8 +37,11 @@ export default function ItemContentLeft({
       <CardBody>
         <Nav className="menu-right">
           <span className="nav-link" onClick={() => likePost(_id)}>
-            <FontAwesomeIcon icon={faHeart} spin color="red" />
-            <FontAwesomeIcon icon={faHeart} />
+            {totalLike ? (
+              <FontAwesomeIcon icon={faHeart} color="red" />
+            ) : (
+              <FontAwesomeIcon icon={faHeart} />
+            )}
           </span>
 
           <Link className="nav-link" to="/">

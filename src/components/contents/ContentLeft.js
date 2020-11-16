@@ -1,49 +1,32 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import { ItemContentLeft } from "../contents";
-import axios from "axios";
 import "./css/contentLeft.css";
+import callApi from "../../helpers/axios";
 
 export default function ContentLeft() {
   const [posts, setPosts] = useState([]);
   // const [like, setLike] = useState(false);
-  const history = useHistory();
-
-  // const likePost = () => {
-  //   setLike(!like);
-  // };
 
   const handleLikePost = (postId) => {
-    const deletePost = async () => {
+    const likePost = async () => {
       try {
-        const res = await axios.put(
-          `https://1q6gt.sse.codesandbox.io/posts/${postId}`
-        );
-
-        alert("Like thanh cong");
-      } catch (e) {
-        console.log("loi roiiii", { e });
+        const res = await callApi.put(`/posts/${postId}`);
+        console.log("res", res);
+      } catch (error) {
+        console.log("error", error);
       }
     };
 
-    deletePost();
+    likePost();
   };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("https://1q6gt.sse.codesandbox.io/posts");
-        if (res.data.posts) {
-          setPosts(res.data.posts);
-        }
-      } catch (e) {
-        console.log("loi roiiii", { e });
-
-        if (e.response.data.error.message === "invalid token") {
-          // xoa local storage
-          // xoa headers
-          history.push("/login");
-        }
+        const res = await callApi.get("/posts");
+        setPosts(res.posts);
+      } catch (error) {
+        console.log("error", error);
       }
     };
 
@@ -52,10 +35,10 @@ export default function ContentLeft() {
 
   return (
     <div className="content-left">
-      {posts.map((post, index) => {
+      {posts.map((post) => {
         return (
           <ItemContentLeft
-            index={index}
+            key={post._id}
             data={post}
             likePost={handleLikePost}
           />
