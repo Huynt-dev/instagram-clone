@@ -13,12 +13,11 @@ import {
 } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faHome,
   faPaperPlane,
   faCompass,
   faHeart
 } from "@fortawesome/free-regular-svg-icons";
-
+import { faHome } from "@fortawesome/free-solid-svg-icons";
 export default function NavMenu() {
   const history = useHistory();
   const logout = () => {
@@ -27,7 +26,7 @@ export default function NavMenu() {
   };
 
   return (
-    <Navbar color="white" light expand="md">
+    <Navbar color="white" light expand="md" className="menu">
       <div className="container yolo">
         <Link to="/">
           <img
@@ -70,8 +69,10 @@ export default function NavMenu() {
               />
             </DropdownToggle>
             <DropdownMenu right>
-              <DropdownItem>Option 1</DropdownItem>
-              <DropdownItem>Option 2</DropdownItem>
+              <Link to="/profile">
+                <DropdownItem>Trang cá nhân</DropdownItem>
+              </Link>
+              <DropdownItem>Đã Lưu</DropdownItem>
               <DropdownItem divider />
               <DropdownItem onClick={logout}>Logout</DropdownItem>
             </DropdownMenu>

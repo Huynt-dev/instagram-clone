@@ -2,7 +2,8 @@ import React from "react";
 import "../../styles.css";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { Home } from "../contents";
-import { HomeLogin } from "../login";
+import { Login } from "../login";
+import { Profile } from "../profile";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
 import NoFound from "./NoFound";
@@ -12,8 +13,9 @@ export default function Routers() {
   return (
     <Router>
       <Switch>
-        <PublicRoute path="/login" exact component={HomeLogin} />
+        <PublicRoute path="/login" exact component={Login} />
         <PrivateRoute path="/" exact component={Home} />
+        <PrivateRoute path="/profile" exact component={Profile} />
         <PublicRoute path="*" exact component={NoFound} />
       </Switch>
     </Router>

@@ -20,7 +20,7 @@ import {
 } from "@fortawesome/free-regular-svg-icons";
 
 export default function ItemContentLeft({
-  data: { userPost, image, _id, totalLike, content },
+  data: { userPost, image, _id, totalLike, content, key, likes },
   likePost
 }) {
   return (
@@ -37,7 +37,7 @@ export default function ItemContentLeft({
       <CardBody>
         <Nav className="menu-right">
           <span className="nav-link" onClick={() => likePost(_id)}>
-            {totalLike ? (
+            {likes.includes(_id) ? (
               <FontAwesomeIcon icon={faHeart} color="red" />
             ) : (
               <FontAwesomeIcon icon={faHeart} />
@@ -57,6 +57,7 @@ export default function ItemContentLeft({
         </CardSubtitle>
         <CardText>{content}</CardText>
       </CardBody>
+
       <CardFooter className="content-left-bottom text-muted">
         <input
           className="form-control"

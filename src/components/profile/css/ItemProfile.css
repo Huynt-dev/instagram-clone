@@ -1,3 +1,9 @@
+a {
+  color: #8e8e8e;
+}
+a:hover {
+  color: black;
+}
 .contentProfile {
   width: 100%;
   display: flex;
@@ -25,7 +31,6 @@
 }
 
 .nameUserAvatar {
-  margin-left: 10px;
   display: none;
 }
 
@@ -64,25 +69,35 @@
 .textProfile {
   color: #8e8e8e;
 }
+
 .menuUser {
   display: flex;
   color: #8e8e8e;
   justify-content: center;
   line-height: 30px;
 }
+
 .menuUser .nav-link {
   cursor: pointer;
-  color: #8e8e8e;
-  margin-right: 60px;
   font-size: 12px;
   font-weight: 600;
 }
 
-a:last-child {
-  margin-right: 0px;
+.nav-item {
+  margin-right: 60px;
+}
+
+.nav-item span {
+  margin-left: 10px;
+}
+
+.nav-item:last-child {
+  margin-right: 0;
 }
 
 .active2 {
+  position: relative;
+  top: -1px;
   border-top: 1px solid black;
   color: black;
 }
@@ -91,13 +106,15 @@ a:last-child {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: white;
-  padding-left: 0 !important;
+  /* background-color: white; */
 }
 
 .textInfo {
   text-align: center;
-  line-height: auto;
+}
+
+.imagesTab {
+  width: 380px;
 }
 
 @media only screen and (max-width: 768px) {
@@ -123,8 +140,20 @@ a:last-child {
   .avatarProfileMin {
     display: block;
   }
-
   .infoUserMin {
     display: flex;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .textInfo {
+    display: none;
+  }
+  .imagesTab {
+    width: 100%;
+    margin: auto;
+  }
+  .nav-item span {
+    display: none;
   }
 }

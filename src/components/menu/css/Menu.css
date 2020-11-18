@@ -1,3 +1,10 @@
+a {
+  text-decoration: none !important;
+}
+.menu {
+  border-bottom: 1px solid #dbdbdb;
+}
+
 .logo-2 {
   width: 103px;
 }
@@ -21,6 +28,7 @@
 .yolo {
   height: 54px;
 }
+
 .menu-box {
   display: flex;
   justify-content: center;

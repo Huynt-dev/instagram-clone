@@ -1,7 +1,7 @@
 import React from "react";
 import ContentLeft from "./ContentLeft";
 import ContentRight from "./ContentRight";
-import NavMenu from "../../components/menu/Menu";
+import { NavMenu } from "../menu";
 import "./css/home.css";
 import { Row, Col } from "reactstrap";
 
