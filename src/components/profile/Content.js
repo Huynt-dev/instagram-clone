@@ -26,7 +26,7 @@ export default function Content() {
       <Nav className="menuUser">
         <NavItem>
           <NavLink
-            className={classnames({ active2: activeTab === "1" })}
+            className={classnames("colorLink", { active2: activeTab === "1" })}
             onClick={() => {
               toggle("1");
             }}
@@ -37,7 +37,7 @@ export default function Content() {
         </NavItem>
         <NavItem>
           <NavLink
-            className={classnames({ active2: activeTab === "2" })}
+            className={classnames("colorLink", { active2: activeTab === "2" })}
             onClick={() => {
               toggle("2");
             }}
@@ -48,7 +48,7 @@ export default function Content() {
         </NavItem>
         <NavItem>
           <NavLink
-            className={classnames({ active2: activeTab === "3" })}
+            className={classnames("colorLink", { active2: activeTab === "3" })}
             onClick={() => {
               toggle("3");
             }}
@@ -59,7 +59,7 @@ export default function Content() {
         </NavItem>
         <NavItem>
           <NavLink
-            className={classnames({ active2: activeTab === "4" })}
+            className={classnames("colorLink", { active2: activeTab === "4" })}
             onClick={() => {
               toggle("4");
             }}
@@ -71,17 +71,16 @@ export default function Content() {
       </Nav>
       <TabContent activeTab={activeTab}>
         <TabPane tabId="1">
-          <Row className="contentTab">
-            <Col xl={3} lg={6} md="12" sm="12" xs={12}>
-              <img className="imagesTab" src="../images/2.jpg" alt="ok" />
-            </Col>
-            <Col xl={9} lg={6} md="12" sm="12" xs={12}>
-              <div className="textInfo">
+          <div className="contentTab">
+            <img className="imagesTab" src="../images/2.jpg" alt="ok" />
+
+            <div className="textInfo">
+              <div className="textInfoCenter">
                 <p>
                   <strong>Bắt đầu ghi và chia sẻ khoảnh khắc của bạn.</strong>
                 </p>
                 <p>Tải ứng dụng để chia sẻ ảnh hoặc video đầu tiên của bạn.</p>
-                <div>
+                <div className="mt-2">
                   <img
                     className="img-download"
                     alt="ok"
@@ -94,8 +93,8 @@ export default function Content() {
                   />
                 </div>
               </div>
-            </Col>
-          </Row>
+            </div>
+          </div>
         </TabPane>
 
         <TabPane tabId="2">

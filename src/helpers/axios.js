@@ -6,7 +6,6 @@ const callApi = axios.create({
 
 callApi.interceptors.response.use(
   (res) => {
-    console.log(res);
     return Promise.resolve(res.data);
   },
   (error) => {

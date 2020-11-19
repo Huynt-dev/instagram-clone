@@ -8,7 +8,7 @@ import { faSnowboarding } from "@fortawesome/free-solid-svg-icons";
 import callApi from "../../helpers/axios";
 
 const FormLogin = () => {
-  const [user, setUser] = useState("");
+  const [userMail, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [hideLogin, setHideLogin] = useState(true);
@@ -16,12 +16,12 @@ const FormLogin = () => {
   let history = useHistory();
 
   useEffect(() => {
-    if (user.length >= 6 && password.length >= 6) {
+    if (userMail.length >= 6 && password.length >= 6) {
       setHideLogin(false);
     } else {
       setHideLogin(true);
     }
-  }, [user, password]);
+  }, [userMail, password]);
 
   const checkLogin = async (e) => {
     e.preventDefault();
@@ -30,12 +30,14 @@ const FormLogin = () => {
       setIsLoading(true);
 
       const res = await callApi.post("/users/login", {
-        email: user,
+        email: userMail,
         password: password
       });
 
-      const { token } = res;
+      const { token, user } = res;
       localStorage.setItem("token", token);
+      localStorage.setItem("user", JSON.stringify(user));
+      console.log(user);
       callApi.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       history.push("/");
     } catch (error) {

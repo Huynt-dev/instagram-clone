@@ -1,19 +1,16 @@
 import React from "react";
 import "./css/contentRight.css";
 export default function ContentRight() {
+  const user = JSON.parse(localStorage.getItem("user"));
   return (
     <div className="content-right">
       <div className="content-box-right">
         <div className="box2">
-          <img
-            className="avatar-right"
-            alt="ok"
-            src="../images/instagram-logo-1.png"
-          />
+          <img className="avatar-right" alt="ok" src={user.avatar} />
 
           <div>
-            <p className="title-left">huynt.info</p>
-            <p className="sub-left">Tuấn Huy</p>
+            <p className="title-left">{user.user}</p>
+            <p className="sub-left">{user.user}</p>
           </div>
         </div>
         <p className="link-left">Chuyển</p>

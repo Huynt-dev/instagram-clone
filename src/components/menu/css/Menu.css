@@ -42,8 +42,8 @@ a {
 
 .avatar {
   display: block;
-  width: 22px;
-  height: 22px;
-  background-color: black;
-  border-radius: 15px;
+  width: 28px;
+  height: 28px;
+  border: 1px solid #8e8e8e;
+  border-radius: 50%;
 }

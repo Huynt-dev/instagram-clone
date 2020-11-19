@@ -6,7 +6,6 @@ import callApi from "../../helpers/axios";
 
 export default function ContentLeft() {
   const [posts, setPosts] = useState([]);
-  const [like, setLike] = useState(false);
   const history = useHistory();
 
   useEffect(() => {
@@ -14,10 +13,10 @@ export default function ContentLeft() {
       try {
         const res = await callApi.get("/posts");
         setPosts(res.posts);
-        console.log(res.posts);
+        // console.log(res.posts);
       } catch (error) {
         // console.log("error", error);
-        localStorage.removeItem("token");
+        // localStorage.removeItem("token");
         history.push("/login");
       }
     };
@@ -29,13 +28,16 @@ export default function ContentLeft() {
     const handleLike = async () => {
       try {
         const res = await callApi.put(`/posts/${postId}/like`);
-        // setLike(true);
-        console.log("res", res);
-        if (res.like) {
-          setLike(false);
-        } else {
-          setLike(true);
-        }
+        const clonePost = [...posts];
+
+        clonePost.map((post, index) => {
+          if (post._id === res.post._id) {
+            post.likes = res.post.likes;
+            post.totalLike = res.post.totalLike;
+          }
+        });
+
+        setPosts(clonePost);
       } catch (error) {
         console.log("error", error);
       }
@@ -48,7 +50,6 @@ export default function ContentLeft() {
       {posts.map((post) => {
         return (
           <ItemContentLeft
-            like={like}
             key={post._id}
             data={post}
             likePost={handleLikePost}

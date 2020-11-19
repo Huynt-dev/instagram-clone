@@ -14,7 +14,7 @@
   border-radius: 50px;
   display: inline-block;
   margin-right: 15px;
-  background-color: black;
+  border: 1px solid #8e8e8e;
 }
 
 .avatar-right-min {

@@ -1,16 +1,17 @@
-a {
-  color: #8e8e8e;
+/* a {
+  color: #8e8e8e !important;
 }
 a:hover {
-  color: black;
-}
+  color: black !important;
+} */
 .contentProfile {
   width: 100%;
   display: flex;
 }
 
 .avatarProfile {
-  background-color: black;
+  display: inline-block;
+  border: 1px solid #8e8e8e;
   border-radius: 50%;
   width: 150px;
   height: 150px;
@@ -19,7 +20,7 @@ a:hover {
 
 .avatarProfileMin {
   display: none;
-  background-color: black;
+  border: 1px solid #8e8e8e;
   border-radius: 50%;
   width: 77px;
   height: 77px;
@@ -99,18 +100,29 @@ a:hover {
   position: relative;
   top: -1px;
   border-top: 1px solid black;
-  color: black;
+  color: black !important;
+}
+
+.colorLink {
+  color: #8e8e8e;
 }
 
 .contentTab {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  /* background-color: white; */
+  background-color: white;
 }
 
 .textInfo {
+  width: 100%;
+  height: auto;
   text-align: center;
+  margin: auto;
+}
+
+.textInfoCenter {
+  align-items: center;
 }
 
 .imagesTab {
@@ -138,7 +150,7 @@ a:hover {
   }
 
   .avatarProfileMin {
-    display: block;
+    display: inline-block;
   }
   .infoUserMin {
     display: flex;

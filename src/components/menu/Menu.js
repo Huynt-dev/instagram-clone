@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import "./css/Menu.css";
 import {
   Collapse,
   Navbar,
-  NavbarBrand,
   Nav,
   UncontrolledDropdown,
   DropdownItem,
@@ -18,13 +17,16 @@ import {
   faHeart
 } from "@fortawesome/free-regular-svg-icons";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
+
 export default function NavMenu() {
   const history = useHistory();
   const logout = () => {
-    localStorage.removeItem("token");
+    localStorage.clear();
+    // localStorage.removeItem("token");
     return history.push("/login");
   };
 
+  const avatar = JSON.parse(localStorage.getItem("user"));
   return (
     <Navbar color="white" light expand="md" className="menu">
       <div className="container yolo">
@@ -62,11 +64,7 @@ export default function NavMenu() {
           </Link>
           <UncontrolledDropdown nav inNavbar>
             <DropdownToggle nav>
-              <img
-                className="avatar"
-                alt="ok"
-                src="../images/instagram-logo-1.png"
-              />
+              <img className="avatar" alt="ok" src={avatar.avatar} />
             </DropdownToggle>
             <DropdownMenu right>
               <Link to="/profile">

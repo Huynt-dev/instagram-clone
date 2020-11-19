@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./css/contentLeft.css";
 import { Link } from "react-router-dom";
 
@@ -20,9 +20,10 @@ import {
 } from "@fortawesome/free-regular-svg-icons";
 
 export default function ItemContentLeft({
-  data: { userPost, image, _id, totalLike, content, key, likes },
+  data: { userPost, image, _id, totalLike, content, likes },
   likePost
 }) {
+  const user = JSON.parse(localStorage.getItem("user"));
   return (
     <Card className="mb-4">
       <CardHeader className="content-left-top text-muted">
@@ -37,7 +38,7 @@ export default function ItemContentLeft({
       <CardBody>
         <Nav className="menu-right">
           <span className="nav-link" onClick={() => likePost(_id)}>
-            {likes.includes(_id) ? (
+            {likes.includes(user._id) ? (
               <FontAwesomeIcon icon={faHeart} color="red" />
             ) : (
               <FontAwesomeIcon icon={faHeart} />

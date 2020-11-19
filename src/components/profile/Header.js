@@ -3,21 +3,24 @@ import { Row, Col } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCog } from "@fortawesome/free-solid-svg-icons";
 export default function Header() {
+  const user = JSON.parse(localStorage.getItem("user"));
   return (
     <header>
       <div className="container">
         <Row>
           <div className="contentProfile">
-            <Col className="mt-5" xl={3} lg={3} md={3} sm={4} xs={4}>
-              <div className="avatarProfile"></div>
-              <div className="avatarProfileMin"></div>
+            <Col className="mt-5" xl={3} lg={3} md={3} sm={3} xs={3}>
+              <img className="avatarProfile" src={user.avatar} alt="ok" />
+
+              <img className="avatarProfileMin" src={user.avatar} alt="ok" />
+
               <div className="mt-4 nameUserAvatar">
-                <h6>Tuấn Huy</h6>
+                <h6>{user.user}</h6>
               </div>
             </Col>
-            <Col className="mt-5" xl={9} lg={9} md={9} sm={8} xs={8}>
+            <Col className="mt-5" xl={9} lg={9} md={9} sm={9} xs={9}>
               <div className="infoUserHeader">
-                <h2 className="mr-3">Huynt</h2>
+                <h2 className="mr-3">{user.user}</h2>
                 <div className="mr-3 editProfile">Chỉnh sửa trang cá nhân</div>
                 <div className="mr-3">
                   <FontAwesomeIcon icon={faCog} />
@@ -36,7 +39,7 @@ export default function Header() {
                 </div>
               </div>
               <div className="mt-3 infoUser">
-                <h6>Tuấn Huy</h6>
+                <h6>{user.nameUser}</h6>
               </div>
             </Col>
           </div>
