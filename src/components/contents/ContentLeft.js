@@ -17,7 +17,7 @@ export default function ContentLeft() {
         // console.log(res.posts);
       } catch (error) {
         // console.log("error", error);
-        // localStorage.removeItem("token");
+        localStorage.removeItem("token");
         history.push("/login");
       }
     };
@@ -62,15 +62,30 @@ export default function ContentLeft() {
     }
   };
 
+  const handleComment = async (post) => {
+    try {
+      const comment = await callApi.post("/comment/create", {
+        content: post.comment,
+        postId: post._id
+      });
+
+      console.log(comment);
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
   return (
     <div className="content-left">
       <CreatePost createPost={handleCreatePost} />
       {posts.map((post) => {
+        // console.log(post);
         return (
           <ItemContentLeft
             key={post._id}
             data={post}
             likePost={handleLikePost}
+            commentPost={handleComment}
           />
         );
       })}

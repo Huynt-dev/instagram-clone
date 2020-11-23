@@ -37,7 +37,7 @@ const FormLogin = () => {
       const { token, user } = res;
       localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify(user));
-      console.log(user);
+      // console.log(user);
       callApi.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       history.push("/");
     } catch (error) {

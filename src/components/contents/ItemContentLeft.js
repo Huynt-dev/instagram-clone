@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import "./css/contentLeft.css";
 import { Link } from "react-router-dom";
 
@@ -10,7 +10,8 @@ import {
   CardHeader,
   CardFooter,
   CardSubtitle,
-  Nav
+  Nav,
+  Form
 } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -20,19 +21,27 @@ import {
 } from "@fortawesome/free-regular-svg-icons";
 
 export default function ItemContentLeft({
-  data: { userPost, image, _id, totalLike, content, likes },
-  likePost
+  data: { user, image, _id, totalLike, content, likes },
+  likePost,
+  commentPost
 }) {
-  const user = JSON.parse(localStorage.getItem("user"));
+  const users = JSON.parse(localStorage.getItem("user"));
+  const [comment, setComment] = useState("");
+  const postComment = (e) => {
+    e.preventDefault();
+    commentPost({ comment, _id });
+  };
+
   return (
     <Card className="mb-4">
       <CardHeader className="content-left-top text-muted">
         <img
           className="avatar-left"
           alt="ok"
-          src="../images/instagram-logo-1.png"
+          src={user.avatar}
+          // src={`https://1q6gt.sse.codesandbox.io/uploads/${user.avatar}`}
         />
-        <p className="title">{userPost}</p>
+        <p className="title">{user.user}</p>
       </CardHeader>
       <CardImg
         top
@@ -43,7 +52,7 @@ export default function ItemContentLeft({
       <CardBody>
         <Nav className="menu-right">
           <span className="nav-link" onClick={() => likePost(_id)}>
-            {likes.includes(user._id) ? (
+            {likes.includes(users._id) ? (
               <FontAwesomeIcon icon={faHeart} color="red" />
             ) : (
               <FontAwesomeIcon icon={faHeart} />
@@ -63,16 +72,20 @@ export default function ItemContentLeft({
         </CardSubtitle>
         <CardText>{content}</CardText>
       </CardBody>
-
-      <CardFooter className="content-left-bottom text-muted">
-        <input
-          className="form-control"
-          type="text"
-          placeholder="Bình Luận"
-          aria-label="text"
-        />
-        <a href="#">Đăng</a>
-      </CardFooter>
+      <Form onSubmit={postComment}>
+        <CardFooter className="content-left-bottom text-muted">
+          <input
+            className="form-control"
+            type="text"
+            placeholder="Thêm bình Luận..."
+            aria-label="text"
+            onChange={(e) => {
+              setComment(e.target.value);
+            }}
+          />
+          <button>Đăng</button>
+        </CardFooter>
+      </Form>
     </Card>
   );
 }
