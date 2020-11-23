@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { ItemContentLeft } from "../contents";
 import "./css/contentLeft.css";
+import { CreatePost } from "../createPost";
 import callApi from "../../helpers/axios";
 
 export default function ContentLeft() {
@@ -45,8 +46,25 @@ export default function ContentLeft() {
     handleLike();
   };
 
+  const handleCreatePost = async (data) => {
+    try {
+      const clonePost = [...posts];
+      const formData = new FormData();
+      formData.append("picture", data.picture);
+      formData.append("postNew", data.postNew);
+
+      const res = await callApi.post("/posts/create", formData);
+      clonePost.unshift(res.post);
+
+      setPosts(clonePost);
+    } catch (error) {
+      console.log("error", { error });
+    }
+  };
+
   return (
     <div className="content-left">
+      <CreatePost createPost={handleCreatePost} />
       {posts.map((post) => {
         return (
           <ItemContentLeft

@@ -34,7 +34,12 @@ export default function ItemContentLeft({
         />
         <p className="title">{userPost}</p>
       </CardHeader>
-      <CardImg top width="100%" src={image} alt="image" />
+      <CardImg
+        top
+        width="100%"
+        src={`https://1q6gt.sse.codesandbox.io/uploads/${image}`}
+        alt="image"
+      />
       <CardBody>
         <Nav className="menu-right">
           <span className="nav-link" onClick={() => likePost(_id)}>
