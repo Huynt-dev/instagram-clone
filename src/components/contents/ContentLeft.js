@@ -16,9 +16,9 @@ export default function ContentLeft() {
         setPosts(res.posts);
         // console.log(res.posts);
       } catch (error) {
-        // console.log("error", error);
-        localStorage.removeItem("token");
-        history.push("/login");
+        console.log("error", error);
+        // localStorage.removeItem("token");
+        // history.push("/login");
       }
     };
 

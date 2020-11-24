@@ -21,11 +21,11 @@ import {
 } from "@fortawesome/free-regular-svg-icons";
 
 export default function ItemContentLeft({
-  data: { user, image, _id, totalLike, content, likes },
+  data: { user, image, _id, totalLike, content, likes, comments },
   likePost,
   commentPost
 }) {
-  const users = JSON.parse(localStorage.getItem("user"));
+  const userData = JSON.parse(localStorage.getItem("user"));
   const [comment, setComment] = useState("");
   const postComment = (e) => {
     e.preventDefault();
@@ -52,7 +52,7 @@ export default function ItemContentLeft({
       <CardBody>
         <Nav className="menu-right">
           <span className="nav-link" onClick={() => likePost(_id)}>
-            {likes.includes(users._id) ? (
+            {likes.includes(userData._id) ? (
               <FontAwesomeIcon icon={faHeart} color="red" />
             ) : (
               <FontAwesomeIcon icon={faHeart} />
@@ -71,6 +71,13 @@ export default function ItemContentLeft({
           {totalLike} lượt thích
         </CardSubtitle>
         <CardText>{content}</CardText>
+        {comments.map((x) => {
+          return (
+            <CardText>
+              <strong>{x.user.user}:</strong> {x.content}
+            </CardText>
+          );
+        })}
       </CardBody>
       <Form onSubmit={postComment}>
         <CardFooter className="content-left-bottom text-muted">
