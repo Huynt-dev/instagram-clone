@@ -48,19 +48,19 @@ export default function NavMenu() {
 
         <Nav className="menu-box">
           <Link className="nav-link" to="/">
-            <FontAwesomeIcon icon={faHome} />
+            <img src="../svg/Asset3.svg" alt="home" width="25" height="25" />
           </Link>
 
           <Link className="nav-link" to="/messenger">
-            <FontAwesomeIcon icon={faPaperPlane} />
+            <img src="../svg/Asset6.svg" alt="home" width="25" height="25" />
           </Link>
 
           <Link className="nav-link" to="/explore">
-            <FontAwesomeIcon icon={faCompass} />
+            <img src="../svg/Asset4.svg" alt="home" width="25" height="25" />
           </Link>
 
           <Link className="nav-link" to="/activity">
-            <FontAwesomeIcon icon={faHeart} />
+            <img src="../svg/Asset2.svg" alt="home" width="25" height="25" />
           </Link>
           <UncontrolledDropdown nav inNavbar>
             <DropdownToggle nav>

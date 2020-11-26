@@ -46,3 +46,15 @@
 .content-left-top {
   background-color: white !important;
 }
+
+.btnComment {
+  border: none;
+  background: none;
+  color: #0095f6;
+  font-weight: bold;
+}
+
+.showCmt {
+  color: #8e8e8e;
+  cursor: pointer;
+}

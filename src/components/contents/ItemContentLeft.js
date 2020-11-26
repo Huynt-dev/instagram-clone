@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./css/contentLeft.css";
 import { Link } from "react-router-dom";
-
 import {
   Card,
   CardImg,
@@ -13,23 +12,35 @@ import {
   Nav,
   Form
 } from "reactstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faComment,
-  faPaperPlane,
-  faHeart
-} from "@fortawesome/free-regular-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import {
+//   faComment,
+//   faPaperPlane,
+//   faHeart
+// } from "@fortawesome/free-regular-svg-icons";
 
 export default function ItemContentLeft({
-  data: { user, image, _id, totalLike, content, likes, comments },
+  data: {
+    user,
+    image,
+    _id,
+    totalLike,
+    totalComment,
+    content,
+    likes,
+    comments = []
+  },
   likePost,
-  commentPost
+  commentPost,
+  showComments
 }) {
   const userData = JSON.parse(localStorage.getItem("user"));
   const [comment, setComment] = useState("");
+  const [showCommentText, setShowCommentText] = useState(true);
   const postComment = (e) => {
     e.preventDefault();
     commentPost({ comment, _id });
+    setComment("");
   };
 
   return (
@@ -51,26 +62,39 @@ export default function ItemContentLeft({
       />
       <CardBody>
         <Nav className="menu-right">
-          <span className="nav-link" onClick={() => likePost(_id)}>
+          <Link className="nav-link" onClick={() => likePost(_id)}>
             {likes.includes(userData._id) ? (
-              <FontAwesomeIcon icon={faHeart} color="red" />
+              <img src="../svg/Asset1.svg" alt="home" width="25" height="25" />
             ) : (
-              <FontAwesomeIcon icon={faHeart} />
+              <img src="../svg/Asset2.svg" alt="home" width="25" height="25" />
             )}
-          </span>
-
-          <Link className="nav-link" to="/">
-            <FontAwesomeIcon icon={faComment} />
           </Link>
 
           <Link className="nav-link" to="/">
-            <FontAwesomeIcon icon={faPaperPlane} />
+            <img src="../svg/Asset7.svg" alt="home" width="25" height="25" />
+          </Link>
+
+          <Link className="nav-link" to="/">
+            <img src="../svg/Asset6.svg" alt="home" width="25" height="25" />
           </Link>
         </Nav>
-        <CardSubtitle tag="h6" className="mb-2 text-muted">
+        <CardSubtitle tag="h6" className="mb-2">
           {totalLike} lượt thích
         </CardSubtitle>
         <CardText>{content}</CardText>
+
+        {totalComment > 0 && showCommentText && (
+          <CardText
+            className="showCmt"
+            onClick={() => {
+              showComments(_id);
+              setShowCommentText(false);
+            }}
+          >
+            Xem tất cả {totalComment} bình luận
+          </CardText>
+        )}
+
         {comments.map((x) => {
           return (
             <CardText>
@@ -86,11 +110,12 @@ export default function ItemContentLeft({
             type="text"
             placeholder="Thêm bình Luận..."
             aria-label="text"
+            value={comment}
             onChange={(e) => {
               setComment(e.target.value);
             }}
           />
-          <button>Đăng</button>
+          <button className="btnComment">Đăng</button>
         </CardFooter>
       </Form>
     </Card>

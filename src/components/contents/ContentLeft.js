@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import { ItemContentLeft } from "../contents";
 import "./css/contentLeft.css";
 import { CreatePost } from "../createPost";
@@ -7,7 +7,7 @@ import callApi from "../../helpers/axios";
 
 export default function ContentLeft() {
   const [posts, setPosts] = useState([]);
-  const history = useHistory();
+  // const history = useHistory();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -64,15 +64,42 @@ export default function ContentLeft() {
 
   const handleComment = async (post) => {
     try {
-      const comment = await callApi.post("/comment/create", {
+      const res = await callApi.post("/comment/create", {
         content: post.comment,
         postId: post._id
       });
 
-      console.log(comment);
+      const clonePost = [...posts];
+
+      clonePost.map((x) => {
+        if (x._id === post._id) {
+          x.totalComment = x.totalComment + 1;
+          x.comments.push(res.comment);
+          console.log(res.comment);
+        }
+
+        return x;
+      });
+      setPosts(clonePost);
     } catch (error) {
       console.log("error", error);
     }
+  };
+
+  const showComments = async (postId) => {
+    const clonePost = [...posts];
+    const res = await callApi.get(`posts/${postId}/comments`);
+    clonePost.map((x) => {
+      x.comments = [];
+
+      if (x._id === postId) {
+        return (x.comments = res.comments);
+      }
+
+      return x;
+    });
+
+    setPosts(clonePost);
   };
 
   return (
@@ -86,6 +113,7 @@ export default function ContentLeft() {
             data={post}
             likePost={handleLikePost}
             commentPost={handleComment}
+            showComments={showComments}
           />
         );
       })}
