@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
+import logo from "../../../public/images/instagram-logo-1.png";
 import "./css/Menu.css";
 import {
   Collapse,
@@ -31,11 +32,7 @@ export default function NavMenu() {
     <Navbar color="white" light expand="md" className="menu">
       <div className="container yolo">
         <Link to="/">
-          <img
-            className="logo-2"
-            alt="ok"
-            src="../images/instagram-logo-1.png"
-          />
+          <img className="logo-2" alt="ok" src={logo} />
         </Link>
         <Collapse navbar>
           <input

@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { Button, Form, FormGroup, Input } from "reactstrap";
-import "./css/FormLogin.css";
+import "./css/Register.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSnowboarding } from "@fortawesome/free-solid-svg-icons";
+import {
+  faSnowboarding,
+  faFacebookSquare
+} from "@fortawesome/free-brands-svg-icons";
 import callApi from "../../helpers/axios";
 
-const FormLogin = () => {
+const Register = () => {
   const [userMail, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -52,33 +55,16 @@ const FormLogin = () => {
     <div>
       <Form className="box-login" onSubmit={checkLogin}>
         <img className="logo" alt="ok" src="../images/instagram-logo-1.png" />
-        <FormGroup>
-          <Input
-            className="input-login"
-            type="email"
-            name="userName"
-            id="exampleEmail"
-            placeholder="Số điện thoại, tên người dùng hoặc email"
-            onChange={(e) => setUser(e.target.value)}
-          />
-        </FormGroup>
-        <FormGroup>
-          <Input
-            className="input-login"
-            type="password"
-            name="password"
-            id="examplePassword"
-            placeholder="Mật khẩu"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </FormGroup>
 
-        <Button className="btn" color="primary" disabled={hideLogin}>
-          {isLoading ? (
-            <FontAwesomeIcon icon={faSnowboarding} size="lg" spin />
-          ) : (
-            "Đăng nhập"
-          )}
+        <Button
+          className="btn"
+          color="primary"
+          onClick={(e) => {
+            e.preventDefault();
+          }}
+        >
+          <FontAwesomeIcon className="mr-2" icon={faFacebookSquare} size="lg" />
+          Đăng nhập bằng Facebook
         </Button>
 
         <div className="of">
@@ -88,21 +74,66 @@ const FormLogin = () => {
           </div>
           <div className="line"></div>
         </div>
-        <div className="login-facebook">
-          <img
-            src="https://brandslogo.net/wp-content/uploads/2016/09/facebook-icon-preview-1.png"
-            width="30px"
-            alt="ok"
+
+        <FormGroup>
+          <Input
+            className="input-login"
+            type="email"
+            name="email"
+            id="exampleEmail"
+            placeholder="Số điện thoại, tên người dùng hoặc email"
+            onChange={(e) => setUser(e.target.value)}
           />
-          <span>Đăng nhập bằng Facebook</span>
-        </div>
+        </FormGroup>
+
+        <FormGroup>
+          <Input
+            className="input-login"
+            type="text"
+            name="fullName"
+            placeholder="Tên đầy đủ"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </FormGroup>
+
+        <FormGroup>
+          <Input
+            className="input-login"
+            type="text"
+            name="user"
+            placeholder="Tên người dùng"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </FormGroup>
+
+        <FormGroup>
+          <Input
+            className="input-login"
+            type="password"
+            name="password"
+            placeholder="Mật khẩu"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </FormGroup>
+
+        <span className="info mb-3">
+          Bằng cách đăng ký, bạn đồng ý với
+          <strong> Điều khoản, Chính sách dữ liệu</strong> và
+          <strong> Chính sách cookie</strong> của chúng tôi.
+        </span>
+        <Button className="btn" color="primary" disabled={hideLogin}>
+          {isLoading ? (
+            <FontAwesomeIcon icon={faSnowboarding} size="lg" spin />
+          ) : (
+            "Đăng ký"
+          )}
+        </Button>
         <p>{error}</p>
-        <a href="#">Quên mật khẩu?</a>
       </Form>
 
       <div className="box-login mt-3">
         <p>
-          Bạn không có tài khoản? <Link to="/register">Đăng ký</Link>
+          Bạn có tài khoản? <Link to="/login">Đăng nhập</Link>
         </p>
       </div>
       <div className="box-dowload mt-3">
@@ -116,4 +147,4 @@ const FormLogin = () => {
   );
 };
 
-export default FormLogin;
+export default Register;

@@ -12,12 +12,8 @@ import {
   Nav,
   Form
 } from "reactstrap";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import {
-//   faComment,
-//   faPaperPlane,
-//   faHeart
-// } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
 
 export default function ItemContentLeft({
   data: {
@@ -32,7 +28,8 @@ export default function ItemContentLeft({
   },
   likePost,
   commentPost,
-  showComments
+  showComments,
+  removeComment
 }) {
   const userData = JSON.parse(localStorage.getItem("user"));
   const [comment, setComment] = useState("");
@@ -62,13 +59,20 @@ export default function ItemContentLeft({
       />
       <CardBody>
         <Nav className="menu-right">
-          <Link className="nav-link" onClick={() => likePost(_id)}>
+          <a
+            className="nav-link"
+            onClick={(e) => {
+              e.preventDefault();
+              likePost(_id);
+            }}
+            href="/"
+          >
             {likes.includes(userData._id) ? (
               <img src="../svg/Asset1.svg" alt="home" width="25" height="25" />
             ) : (
               <img src="../svg/Asset2.svg" alt="home" width="25" height="25" />
             )}
-          </Link>
+          </a>
 
           <Link className="nav-link" to="/">
             <img src="../svg/Asset7.svg" alt="home" width="25" height="25" />
@@ -97,8 +101,16 @@ export default function ItemContentLeft({
 
         {comments.map((x) => {
           return (
-            <CardText>
+            <CardText className="commentsStyle" key={x._id}>
               <strong>{x.user.user}:</strong> {x.content}
+              <FontAwesomeIcon
+                icon={faTrashAlt}
+                className="removeCmt"
+                onClick={(e) => {
+                  e.preventDefault();
+                  removeComment(x._id, { _id });
+                }}
+              />
             </CardText>
           );
         })}

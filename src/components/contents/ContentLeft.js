@@ -73,12 +73,11 @@ export default function ContentLeft() {
 
       clonePost.map((x) => {
         if (x._id === post._id) {
+          x.comments = [];
           x.totalComment = x.totalComment + 1;
           x.comments.push(res.comment);
-          console.log(res.comment);
+          // console.log(res.comment);
         }
-
-        return x;
       });
       setPosts(clonePost);
     } catch (error) {
@@ -90,16 +89,39 @@ export default function ContentLeft() {
     const clonePost = [...posts];
     const res = await callApi.get(`posts/${postId}/comments`);
     clonePost.map((x) => {
-      x.comments = [];
-
       if (x._id === postId) {
-        return (x.comments = res.comments);
+        x.comments = [];
+        x.comments = res.comments;
       }
-
-      return x;
     });
 
     setPosts(clonePost);
+  };
+
+  const removeComment = async (idComment, data) => {
+    try {
+      if (window.confirm("Xoá Bình Luận này?")) {
+        await callApi.put(`comment/${idComment}/remove`, {
+          idPost: data._id
+        });
+
+        const clonePost = [...posts];
+        clonePost.map((x) => {
+          if (x._id === data._id) {
+            const cloneComment = [...x.comments];
+
+            const comments = cloneComment.filter((comment) => {
+              return comment._id !== idComment;
+            });
+
+            x.comments = comments;
+          }
+        });
+        setPosts(clonePost);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -114,6 +136,7 @@ export default function ContentLeft() {
             likePost={handleLikePost}
             commentPost={handleComment}
             showComments={showComments}
+            removeComment={removeComment}
           />
         );
       })}

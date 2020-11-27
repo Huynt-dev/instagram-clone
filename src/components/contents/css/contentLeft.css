@@ -58,3 +58,14 @@
   color: #8e8e8e;
   cursor: pointer;
 }
+
+.removeCmt {
+  display: none;
+  float: right;
+  color: red;
+  cursor: pointer;
+}
+
+.commentsStyle:hover .removeCmt {
+  display: inline-block;
+}
