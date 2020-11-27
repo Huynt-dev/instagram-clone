@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { Button, Form, FormGroup, Input } from "reactstrap";
+import { Login } from "../login";
 import "./css/FormLogin.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -49,7 +50,7 @@ const FormLogin = () => {
   };
 
   return (
-    <div>
+    <Login>
       <Form className="box-login" onSubmit={checkLogin}>
         <img className="logo" alt="ok" src="../images/instagram-logo-1.png" />
         <FormGroup>
@@ -112,7 +113,7 @@ const FormLogin = () => {
           <img className="img-download" alt="ok" src="../images/android.png" />
         </div>
       </div>
-    </div>
+    </Login>
   );
 };
 

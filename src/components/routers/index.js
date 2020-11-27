@@ -2,7 +2,7 @@ import React from "react";
 import "../../styles.css";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { Home } from "../contents";
-import { Login, Register } from "../login";
+import { FormLogin, Register } from "../login";
 import { Profile } from "../profile";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
@@ -13,7 +13,7 @@ export default function Routers() {
   return (
     <Router>
       <Switch>
-        <PublicRoute path="/login" exact component={Login} />
+        <PublicRoute path="/login" exact component={FormLogin} />
         <PublicRoute path="/register" exact component={Register} />
         <PrivateRoute path="/" exact component={Home} />
         <PrivateRoute path="/profile" exact component={Profile} />

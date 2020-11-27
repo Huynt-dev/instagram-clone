@@ -4,7 +4,7 @@ import { FormLogin, Slider } from "../login";
 import Footer from "../../components/menu/Footer";
 import { Row, Col } from "reactstrap";
 
-export default function HomeLogin() {
+export default function Login({ children }) {
   return (
     <div>
       <div className="container content-login">
@@ -16,7 +16,7 @@ export default function HomeLogin() {
           </Col>
 
           <Col className="mt-5" xl={5} lg={5} md={12} sm={12} xs={12}>
-            <FormLogin />
+            {children}
           </Col>
         </Row>
       </div>
