@@ -6,3 +6,21 @@
   margin: auto 10px;
   text-align: center;
 }
+
+.titleRegister {
+  color: #8e8e8e;
+  color: rgba(var(--f52, 142, 142, 142), 1);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 20px;
+  margin: 0 10px 10px 10px;
+  text-align: center;
+}
+
+.errorLogin {
+  color: #ed4956;
+  font-size: 14px;
+  line-height: 18px;
+  margin: 10px 0 !important;
+  text-align: center;
+}

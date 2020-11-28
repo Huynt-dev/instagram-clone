@@ -1,6 +1,6 @@
 import React from "react";
 import "./css/HomeLogin.css";
-import { FormLogin, Slider } from "../login";
+import { Slider } from "../login";
 import Footer from "../../components/menu/Footer";
 import { Row, Col } from "reactstrap";
 

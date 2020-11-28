@@ -12,7 +12,9 @@ import {
 import callApi from "../../helpers/axios";
 
 const Register = () => {
-  const [userMail, setUser] = useState("");
+  const [userMail, setUserMail] = useState("");
+  const [name, setName] = useState("");
+  const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [hideLogin, setHideLogin] = useState(true);
@@ -27,36 +29,38 @@ const Register = () => {
     }
   }, [userMail, password]);
 
-  const checkLogin = async (e) => {
+  const register = async (e) => {
     e.preventDefault();
 
     try {
       setIsLoading(true);
 
-      const res = await callApi.post("/users/login", {
+      await callApi.post("/users/register", {
         email: userMail,
+        name: name,
+        user: userName,
         password: password
       });
 
-      const { token, user } = res;
-      localStorage.setItem("token", token);
-      localStorage.setItem("user", JSON.stringify(user));
-      // console.log(user);
-      callApi.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-      history.push("/");
+      // const { token, user } = res;
+      // localStorage.setItem("token", token);
+      // localStorage.setItem("user", JSON.stringify(user));
+      // // console.log(user);
+      // callApi.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+      history.push("/login");
     } catch (error) {
       setIsLoading(false);
-      setError(
-        "Rất tiếc, mật khẩu của bạn không đúng. Vui lòng kiểm tra lại mật khẩu."
-      );
+      setError(error);
     }
   };
 
   return (
     <Login>
-      <Form className="box-login" onSubmit={checkLogin}>
+      <Form className="box-login" onSubmit={register}>
         <img className="logo" alt="ok" src="../images/instagram-logo-1.png" />
-
+        <h2 className="titleRegister">
+          Đăng ký để xem ảnh và video từ bạn bè.
+        </h2>
         <Button
           className="btn"
           color="primary"
@@ -83,7 +87,7 @@ const Register = () => {
             name="email"
             id="exampleEmail"
             placeholder="Số điện thoại, tên người dùng hoặc email"
-            onChange={(e) => setUser(e.target.value)}
+            onChange={(e) => setUserMail(e.target.value)}
           />
         </FormGroup>
 
@@ -91,9 +95,9 @@ const Register = () => {
           <Input
             className="input-login"
             type="text"
-            name="fullName"
+            name="name"
             placeholder="Tên đầy đủ"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => setName(e.target.value)}
           />
         </FormGroup>
 
@@ -103,7 +107,7 @@ const Register = () => {
             type="text"
             name="user"
             placeholder="Tên người dùng"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => setUserName(e.target.value)}
           />
         </FormGroup>
 
@@ -116,7 +120,7 @@ const Register = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </FormGroup>
-
+        <p className="errorLogin">{error}</p>
         <span className="info mb-3">
           Bằng cách đăng ký, bạn đồng ý với
           <strong> Điều khoản, Chính sách dữ liệu</strong> và
@@ -124,12 +128,11 @@ const Register = () => {
         </span>
         <Button className="btn" color="primary" disabled={hideLogin}>
           {isLoading ? (
-            <FontAwesomeIcon icon={faSnowboarding} size="lg" spin />
+            <FontAwesomeIcon icon={faFacebookSquare} size="lg" spin />
           ) : (
             "Đăng ký"
           )}
         </Button>
-        <p>{error}</p>
       </Form>
 
       <div className="box-login mt-3">

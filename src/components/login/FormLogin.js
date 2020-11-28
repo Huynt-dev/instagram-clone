@@ -38,7 +38,6 @@ const FormLogin = () => {
       const { token, user } = res;
       localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify(user));
-      // console.log(user);
       callApi.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       history.push("/");
     } catch (error) {
@@ -74,7 +73,7 @@ const FormLogin = () => {
           />
         </FormGroup>
 
-        <Button className="btn" color="primary" disabled={hideLogin}>
+        <Button className="btn mt-2" color="primary" disabled={hideLogin}>
           {isLoading ? (
             <FontAwesomeIcon icon={faSnowboarding} size="lg" spin />
           ) : (
@@ -97,8 +96,8 @@ const FormLogin = () => {
           />
           <span>Đăng nhập bằng Facebook</span>
         </div>
-        <p>{error}</p>
-        <a href="#">Quên mật khẩu?</a>
+        <p className="errorLogin">{error}</p>
+        <a href="/">Quên mật khẩu?</a>
       </Form>
 
       <div className="box-login mt-3">

@@ -1,6 +1,6 @@
 .logo {
   width: 175px;
-  margin: 10px 0 30px 0;
+  margin: 10px 0 15px 0;
 }
 
 .btn {
@@ -14,9 +14,13 @@
   float: right;
 }
 
+.form-group {
+  margin-bottom: 7px !important;
+}
+
 .content-login {
-  margin-top: 100px;
-  height: 777px;
+  margin: 100px auto;
+  height: auto;
 }
 
 .background-img {

@@ -69,3 +69,11 @@ p {
   height: 40px;
   margin: 5px;
 }
+
+.errorLogin {
+  color: #ed4956;
+  font-size: 14px;
+  line-height: 18px;
+  margin: 10px 0 !important;
+  text-align: center;
+}
