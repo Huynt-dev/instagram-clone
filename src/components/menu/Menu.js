@@ -12,12 +12,12 @@ import {
   DropdownToggle
 } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faPaperPlane,
-  faCompass,
-  faHeart
-} from "@fortawesome/free-regular-svg-icons";
-import { faHome } from "@fortawesome/free-solid-svg-icons";
+// import {
+//   faPaperPlane,
+//   faCompass,
+//   faHeart
+// } from "@fortawesome/free-regular-svg-icons";
+// import { faHome } from "@fortawesome/free-solid-svg-icons";
 
 export default function NavMenu() {
   const history = useHistory();

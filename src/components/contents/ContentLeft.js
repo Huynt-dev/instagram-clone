@@ -14,7 +14,7 @@ export default function ContentLeft() {
       try {
         const res = await callApi.get("/posts");
         setPosts(res.posts);
-        // console.log(res.posts);
+        // console.log(res);
       } catch (error) {
         console.log("error", error);
         // localStorage.removeItem("token");
