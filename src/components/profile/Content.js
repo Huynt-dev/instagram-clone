@@ -69,44 +69,48 @@ function Content({ posts }) {
       </Nav>
       <TabContent activeTab={activeTab}>
         <TabPane tabId="1">
-          <Row>
-            {posts.map((x) => {
-              return (
-                <Col className="box-image" sm="4" key={x._id}>
-                  <img
-                    className="image-box"
-                    src={`${configs.IMAGE_URL}/${x.image}`}
-                    alt="ok"
-                  />
-                </Col>
-              );
-            })}
-          </Row>
+          {posts.length > 0 ? (
+            <Row>
+              {posts.map((x) => {
+                return (
+                  <Col className="box-image" sm="4" key={x._id}>
+                    <img
+                      className="image-box"
+                      src={`${configs.IMAGE_URL}/${x.image}`}
+                      alt="ok"
+                    />
+                  </Col>
+                );
+              })}
+            </Row>
+          ) : (
+            <div className="contentTab">
+              <img className="imagesTab" src="../images/2.jpg" alt="ok" />
 
-          <div className="contentTab">
-            <img className="imagesTab" src="../images/2.jpg" alt="ok" />
-
-            <div className="textInfo">
-              <div className="textInfoCenter">
-                <p>
-                  <strong>Bắt đầu ghi và chia sẻ khoảnh khắc của bạn.</strong>
-                </p>
-                <p>Tải ứng dụng để chia sẻ ảnh hoặc video đầu tiên của bạn.</p>
-                <div className="mt-2">
-                  <img
-                    className="img-download"
-                    alt="ok"
-                    src="../images/ios.png"
-                  />
-                  <img
-                    className="img-download"
-                    alt="ok"
-                    src="../images/android.png"
-                  />
+              <div className="textInfo">
+                <div className="textInfoCenter">
+                  <p>
+                    <strong>Bắt đầu ghi và chia sẻ khoảnh khắc của bạn.</strong>
+                  </p>
+                  <p>
+                    Tải ứng dụng để chia sẻ ảnh hoặc video đầu tiên của bạn.
+                  </p>
+                  <div className="mt-2">
+                    <img
+                      className="img-download"
+                      alt="ok"
+                      src="../images/ios.png"
+                    />
+                    <img
+                      className="img-download"
+                      alt="ok"
+                      src="../images/android.png"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          )}
         </TabPane>
 
         <TabPane tabId="2"></TabPane>
