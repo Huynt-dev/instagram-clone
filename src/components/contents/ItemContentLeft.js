@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./css/contentLeft.css";
-import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
+import configs from "../../configs";
 import {
   Card,
   CardImg,
@@ -56,7 +57,7 @@ export default function ItemContentLeft({
       <CardImg
         top
         width="100%"
-        src={`https://1q6gt.sse.codesandbox.io/uploads/${image}`}
+        src={`${configs.IMAGE_URL}/${image}`}
         alt="image"
       />
       <CardBody>

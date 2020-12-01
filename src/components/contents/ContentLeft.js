@@ -14,11 +14,8 @@ export default function ContentLeft() {
       try {
         const res = await callApi.get("/posts");
         setPosts(res.posts);
-        // console.log(res);
       } catch (error) {
         console.log("error", error);
-        // localStorage.removeItem("token");
-        // history.push("/login");
       }
     };
 
@@ -31,7 +28,7 @@ export default function ContentLeft() {
         const res = await callApi.put(`/posts/${postId}/like`);
         const clonePost = [...posts];
 
-        clonePost.map((post, index) => {
+        clonePost.map((post) => {
           if (post._id === res.post._id) {
             post.likes = res.post.likes;
             post.totalLike = res.post.totalLike;

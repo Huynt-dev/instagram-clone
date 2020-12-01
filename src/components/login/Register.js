@@ -6,7 +6,7 @@ import "./css/Register.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faSnowboarding,
+  // faSnowboarding
   faFacebookSquare
 } from "@fortawesome/free-brands-svg-icons";
 import callApi from "../../helpers/axios";
@@ -42,11 +42,6 @@ const Register = () => {
         password: password
       });
 
-      // const { token, user } = res;
-      // localStorage.setItem("token", token);
-      // localStorage.setItem("user", JSON.stringify(user));
-      // // console.log(user);
-      // callApi.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       history.push("/login");
     } catch (error) {
       setIsLoading(false);
