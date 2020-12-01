@@ -30,7 +30,7 @@ const FormLogin = () => {
     try {
       setIsLoading(true);
 
-      const res = await callApi.post("/users/login", {
+      const res = await callApi.post("/auth/login", {
         email: userMail,
         password: password
       });

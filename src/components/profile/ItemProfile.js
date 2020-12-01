@@ -3,12 +3,17 @@ import React from "react";
 import Header from "./Header";
 import Content from "./Content";
 import "./css/ItemProfile.css";
-export default function ItemProfile() {
+
+export default function ItemProfile({
+  userProfile = {},
+  posts = [],
+  postLength = 0
+}) {
   return (
     <div>
-      <Header />
+      <Header userProfile={userProfile} postLength={postLength} />
       <div className="border-top">
-        <Content />
+        <Content posts={posts} />
       </div>
     </div>
   );

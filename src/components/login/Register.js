@@ -35,7 +35,7 @@ const Register = () => {
     try {
       setIsLoading(true);
 
-      await callApi.post("/users/register", {
+      await callApi.post("/auth/register", {
         email: userMail,
         name: name,
         user: userName,

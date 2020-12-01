@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./css/contentLeft.css";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import {
   Card,
   CardImg,
@@ -49,7 +49,9 @@ export default function ItemContentLeft({
           src={user.avatar}
           // src={`https://1q6gt.sse.codesandbox.io/uploads/${user.avatar}`}
         />
-        <p className="title">{user.user}</p>
+        <Link to={`${user.user}/profile`}>
+          <p className="title">{user.user}</p>
+        </Link>
       </CardHeader>
       <CardImg
         top

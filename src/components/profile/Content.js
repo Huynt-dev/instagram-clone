@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import classnames from "classnames";
 import {
   TabContent,
@@ -6,16 +6,14 @@ import {
   Nav,
   NavItem,
   NavLink,
-  Card,
-  Button,
-  CardTitle,
-  CardText,
   Row,
   Col
 } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCog } from "@fortawesome/free-solid-svg-icons";
-export default function Content() {
+import configs from "../../configs";
+
+function Content({ posts }) {
   const [activeTab, setActiveTab] = useState("1");
 
   const toggle = (tab) => {
@@ -71,6 +69,20 @@ export default function Content() {
       </Nav>
       <TabContent activeTab={activeTab}>
         <TabPane tabId="1">
+          <Row>
+            {posts.map((x) => {
+              return (
+                <Col className="box-image" sm="4" key={x._id}>
+                  <img
+                    className="image-box"
+                    src={`${configs.IMAGE_URL}/${x.image}`}
+                    alt="ok"
+                  />
+                </Col>
+              );
+            })}
+          </Row>
+
           <div className="contentTab">
             <img className="imagesTab" src="../images/2.jpg" alt="ok" />
 
@@ -97,31 +109,10 @@ export default function Content() {
           </div>
         </TabPane>
 
-        <TabPane tabId="2">
-          <Row>
-            <Col sm="6">
-              <Card body>
-                <CardTitle>Special Title Treatment</CardTitle>
-                <CardText>
-                  With supporting text below as a natural lead-in to additional
-                  content.
-                </CardText>
-                <Button>Go somewhere</Button>
-              </Card>
-            </Col>
-            <Col sm="6">
-              <Card body>
-                <CardTitle>Special Title Treatment</CardTitle>
-                <CardText>
-                  With supporting text below as a natural lead-in to additional
-                  content.
-                </CardText>
-                <Button>Go somewhere</Button>
-              </Card>
-            </Col>
-          </Row>
-        </TabPane>
+        <TabPane tabId="2"></TabPane>
       </TabContent>
     </div>
   );
 }
+
+export default Content;

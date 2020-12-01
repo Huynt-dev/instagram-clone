@@ -71,3 +71,27 @@
   font-size: 14px;
   color: #0095f6;
 }
+
+.list-footer-right {
+  list-style: none;
+  padding: 0;
+}
+
+.list-footer-right li a {
+  float: left;
+  color: #c7c7c7;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 13px;
+  text-transform: none;
+  padding-right: 8px;
+}
+
+.copy {
+  color: #c7c7c7;
+  color: rgba(var(--edc, 199, 199, 199), 1);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 13px;
+  text-transform: none;
+}
