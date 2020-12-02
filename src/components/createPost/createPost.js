@@ -6,6 +6,7 @@ export default function CreatePost({ createPost }) {
   const [postNew, setPostNew] = useState("");
   const [picture, setPicture] = useState("");
 
+  const user = JSON.parse(localStorage.getItem("user"));
   const checkPost = async (e) => {
     e.preventDefault();
 
@@ -17,14 +18,18 @@ export default function CreatePost({ createPost }) {
       <Form className="mb-3" onSubmit={checkPost}>
         <textarea
           className="postNew"
+          placeholder={`${user.user} ơi, bạn đang nghĩ gì thế?`}
           onChange={(e) => {
             setPostNew(e.target.value);
           }}
         />
         <Row>
           <Col xl={4} lg={4} md={4} sm={4} xs={4}>
+            <label for="ok">Choose a file</label>
             <Input
               type="file"
+              id="ok"
+              className="inputUpdate"
               onChange={(e) => {
                 setPicture(e.target.files[0]);
               }}

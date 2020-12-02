@@ -4,3 +4,30 @@
   resize: none;
   outline: none;
 }
+textarea {
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid #dbdbdb;
+  outline: none;
+}
+
+label {
+  cursor: pointer;
+  background-color: #007bff;
+  padding: 6px 20px;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid #007bff;
+}
+
+label:hover {
+  background: none;
+  border: 1px solid #007bff;
+  color: #007bff;
+}
+
+.inputUpdate {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
