@@ -7,11 +7,16 @@ import "./css/ItemProfile.css";
 export default function ItemProfile({
   userProfile = {},
   posts = [],
-  postLength = 0
+  postLength = 0,
+  isFollow
 }) {
   return (
     <div>
-      <Header userProfile={userProfile} postLength={postLength} />
+      <Header
+        userProfile={userProfile}
+        postLength={postLength}
+        isFollow={isFollow}
+      />
       <div className="border-top">
         <Content posts={posts} />
       </div>

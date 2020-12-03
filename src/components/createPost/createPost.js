@@ -25,7 +25,7 @@ export default function CreatePost({ createPost }) {
         />
         <Row>
           <Col xl={4} lg={4} md={4} sm={4} xs={4}>
-            <label for="ok">Choose a file</label>
+            <label htmlFor="ok">Choose a file</label>
             <Input
               type="file"
               id="ok"

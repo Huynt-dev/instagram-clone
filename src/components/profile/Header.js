@@ -5,15 +5,22 @@ import { faCog } from "@fortawesome/free-solid-svg-icons";
 import callApi from "../../helpers/axios";
 const user = JSON.parse(localStorage.getItem("user"));
 
-const Header = ({ userProfile, postLength }) => {
-  const follow = async (idUser) => {
-    try {
-      await callApi.post(`/follow/following`, { idUser });
-    } catch (e) {
-      console.log({ e });
-    }
-  };
+const Header = ({ userProfile, postLength, isFollow }, follow, unfollow) => {
+  // const follow = async (idUser) => {
+  //   try {
+  //     await callApi.post(`/follow/following`, { idUser });
+  //   } catch (e) {
+  //     console.log({ e });
+  //   }
+  // };
 
+  // const unfollow = async (idUser) => {
+  //   try {
+  //     await callApi.post(`follow/unfollow`, { idUser });
+  //   } catch (e) {
+  //     console.log({ e });
+  //   }
+  // };
   return (
     <header>
       <div className="container">
@@ -43,6 +50,13 @@ const Header = ({ userProfile, postLength }) => {
                   <button className="mr-3 editProfile">
                     Chỉnh sửa trang cá nhân
                   </button>
+                ) : isFollow ? (
+                  <button
+                    onClick={() => unfollow(userProfile._id)}
+                    className="mr-3 editProfile"
+                  >
+                    Bỏ Theo dõi
+                  </button>
                 ) : (
                   <button
                     onClick={() => follow(userProfile._id)}
@@ -58,10 +72,11 @@ const Header = ({ userProfile, postLength }) => {
                   <strong>{postLength}</strong> bài viết
                 </div>
                 <div className="mr-4">
-                  <strong>38</strong> người theo dõi
+                  <strong>{userProfile.totalFollower}</strong> người theo dõi
                 </div>
                 <div className="mr-4">
-                  Đang theo dõi <strong>3</strong> người dùng
+                  Đang theo dõi <strong>{userProfile.totalFollowing}</strong>{" "}
+                  người dùng
                 </div>
               </div>
               <div className="mt-3 infoUser">
