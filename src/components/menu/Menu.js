@@ -20,6 +20,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faHome } from "@fortawesome/free-solid-svg-icons";
 
 export default function NavMenu() {
+  const user = JSON.parse(localStorage.getItem("user"));
   const history = useHistory();
   const logout = () => {
     localStorage.clear();
@@ -64,7 +65,7 @@ export default function NavMenu() {
               <img className="avatar" alt="ok" src={avatar.avatar} />
             </DropdownToggle>
             <DropdownMenu right>
-              <Link to="/profile">
+              <Link to={`/${user.user}/profile`}>
                 <DropdownItem>Trang cá nhân</DropdownItem>
               </Link>
               <DropdownItem>Đã Lưu</DropdownItem>

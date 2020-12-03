@@ -17,7 +17,6 @@ export default function Routers() {
         <PublicRoute path="/register" exact component={Register} />
         <PrivateRoute path="/" exact component={Home} />
         <PrivateRoute path="/:username/profile" exact component={Profile} />
-        <PrivateRoute path="/profile" exact component={Profile} />
         <PublicRoute path="*" exact component={NoFound} />
       </Switch>
     </Router>
