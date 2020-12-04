@@ -8,7 +8,8 @@ export default function ItemProfile({
   userProfile = {},
   posts = [],
   postLength = 0,
-  isFollow
+  isFollow,
+  setFollow
 }) {
   return (
     <div>
@@ -16,6 +17,7 @@ export default function ItemProfile({
         userProfile={userProfile}
         postLength={postLength}
         isFollow={isFollow}
+        setFollow={setFollow}
       />
       <div className="border-top">
         <Content posts={posts} />

@@ -1,26 +1,29 @@
 import React from "react";
 import { Row, Col } from "reactstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCog } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faCog } from "@fortawesome/free-solid-svg-icons";
 import callApi from "../../helpers/axios";
 const user = JSON.parse(localStorage.getItem("user"));
 
-const Header = ({ userProfile, postLength, isFollow }, follow, unfollow) => {
-  // const follow = async (idUser) => {
-  //   try {
-  //     await callApi.post(`/follow/following`, { idUser });
-  //   } catch (e) {
-  //     console.log({ e });
-  //   }
-  // };
+const Header = ({ userProfile, postLength, isFollow, setFollow }) => {
+  const follow = async (idUser) => {
+    try {
+      await callApi.post(`/follow/following`, { idUser });
+      setFollow(true);
+    } catch (e) {
+      console.log({ e });
+    }
+  };
 
-  // const unfollow = async (idUser) => {
-  //   try {
-  //     await callApi.post(`follow/unfollow`, { idUser });
-  //   } catch (e) {
-  //     console.log({ e });
-  //   }
-  // };
+  const unfollow = async (idUser) => {
+    try {
+      await callApi.post(`follow/unfollow`, { idUser });
+      setFollow(false);
+    } catch (e) {
+      console.log({ e });
+    }
+  };
+
   return (
     <header>
       <div className="container">

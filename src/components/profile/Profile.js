@@ -30,21 +30,21 @@ export default function Profile({ match }) {
     }
   }, []);
 
-  const follow = async (idUser) => {
-    try {
-      await callApi.post(`/follow/following`, { idUser });
-    } catch (e) {
-      console.log({ e });
-    }
-  };
+  // const follow = async (idUser) => {
+  //   try {
+  //     await callApi.post(`/follow/following`, { idUser });
+  //   } catch (e) {
+  //     console.log({ e });
+  //   }
+  // };
 
-  const unfollow = async (idUser) => {
-    try {
-      await callApi.post(`follow/unfollow`, { idUser });
-    } catch (e) {
-      console.log({ e });
-    }
-  };
+  // const unfollow = async (idUser) => {
+  //   try {
+  //     await callApi.post(`follow/unfollow`, { idUser });
+  //   } catch (e) {
+  //     console.log({ e });
+  //   }
+  // };
 
   return (
     <div>
@@ -54,8 +54,7 @@ export default function Profile({ match }) {
         userProfile={userProfile}
         posts={posts}
         postLength={postLength}
-        follow={follow}
-        unfollow={unfollow}
+        setFollow={(status) => setIsFollow(status)}
       />
     </div>
   );
