@@ -2,7 +2,7 @@
 
 # DEMO
 
-link server: https://codesandbox.io/s/server-instagram-clone-1q6gt
+link server: https://1q6gt.sse.codesandbox.io/
 
 link demo: https://kd49w.csb.app/
 
