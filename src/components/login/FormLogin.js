@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { Button, Form, FormGroup, Input } from "reactstrap";
 import { Login } from "../login";
+import { logo, android, ios } from "../../assets/images/index.js";
 import "./css/FormLogin.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -32,7 +33,7 @@ const FormLogin = () => {
 
       const res = await callApi.post("/auth/login", {
         email: userMail,
-        password: password
+        password: password,
       });
 
       const { token, user } = res;
@@ -51,7 +52,7 @@ const FormLogin = () => {
   return (
     <Login>
       <Form className="box-login" onSubmit={checkLogin}>
-        <img className="logo" alt="ok" src="../images/instagram-logo-1.png" />
+        <img className="logo" alt="ok" src={logo} />
         <FormGroup>
           <Input
             className="input-login"
@@ -108,8 +109,8 @@ const FormLogin = () => {
       <div className="box-dowload mt-3">
         <p className="mb-3">Tải ứng dụng.</p>
         <div>
-          <img className="img-download" alt="ok" src="../images/ios.png" />
-          <img className="img-download" alt="ok" src="../images/android.png" />
+          <img className="img-download" alt="ok" src={android} />
+          <img className="img-download" alt="ok" src={ios} />
         </div>
       </div>
     </Login>

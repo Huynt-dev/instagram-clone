@@ -1,0 +1,14 @@
+export { default as Asset1 } from "./asset1.svg";
+export { default as Asset2 } from "./asset2.svg";
+export { default as Asset3 } from "./asset3.svg";
+export { default as Asset4 } from "./asset4.svg";
+export { default as Asset5 } from "./asset5.svg";
+export { default as Asset6 } from "./asset6.svg";
+export { default as Asset7 } from "./asset7.svg";
+export { default as slider } from "./slider.png";
+export { default as image1 } from "./image1.jpeg";
+export { default as image2 } from "./image2.jpeg";
+export { default as image3 } from "./image3.jpeg";
+export { default as android } from "./android.png";
+export { default as ios } from "./ios.jpeg";
+export { default as logo } from "./instagram-logo-1.png";

@@ -1,6 +1,12 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
-import logo from "../../../public/images/instagram-logo-1.png";
+import {
+  logo,
+  Asset3,
+  Asset2,
+  Asset4,
+  Asset6,
+} from "../../assets/images/index";
 import "./css/Menu.css";
 import {
   Collapse,
@@ -9,15 +15,8 @@ import {
   UncontrolledDropdown,
   DropdownItem,
   DropdownMenu,
-  DropdownToggle
+  DropdownToggle,
 } from "reactstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import {
-//   faPaperPlane,
-//   faCompass,
-//   faHeart
-// } from "@fortawesome/free-regular-svg-icons";
-// import { faHome } from "@fortawesome/free-solid-svg-icons";
 
 export default function NavMenu() {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -46,19 +45,19 @@ export default function NavMenu() {
 
         <Nav className="menu-box">
           <Link className="nav-link" to="/">
-            <img src="../svg/Asset3.svg" alt="home" width="25" height="25" />
+            <img src={Asset3} alt="home" width="25" height="25" />
           </Link>
 
           <Link className="nav-link" to="/messenger">
-            <img src="../svg/Asset6.svg" alt="home" width="25" height="25" />
+            <img src={Asset6} alt="home2" width="25" height="25" />
           </Link>
 
           <Link className="nav-link" to="/explore">
-            <img src="../svg/Asset4.svg" alt="home" width="25" height="25" />
+            <img src={Asset4} alt="home3" width="25" height="25" />
           </Link>
 
           <Link className="nav-link" to="/activity">
-            <img src="../svg/Asset2.svg" alt="home" width="25" height="25" />
+            <img src={Asset2} alt="home4" width="25" height="25" />
           </Link>
           <UncontrolledDropdown nav inNavbar>
             <DropdownToggle nav>

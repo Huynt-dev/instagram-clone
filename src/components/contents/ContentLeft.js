@@ -63,7 +63,7 @@ export default function ContentLeft() {
     try {
       const res = await callApi.post("/comment/create", {
         content: post.comment,
-        postId: post._id
+        postId: post._id,
       });
 
       const clonePost = [...posts];
@@ -99,7 +99,7 @@ export default function ContentLeft() {
     try {
       if (window.confirm("Xoá Bình Luận này?")) {
         await callApi.put(`comment/${idComment}/remove`, {
-          idPost: data._id
+          idPost: data._id,
         });
 
         const clonePost = [...posts];

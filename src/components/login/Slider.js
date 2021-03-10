@@ -1,29 +1,30 @@
 import React, { useState } from "react";
 import { Carousel, CarouselItem } from "reactstrap";
+import { image2, image3 } from "../../assets/images/index.js";
 import "./css/slider.css";
 const items = [
   {
     id: 1,
     altText: "Slide 1",
-    img: "./images/6f03eb85463c.jpg"
+    img: `${image2}`,
   },
   {
     id: 2,
     altText: "Slide 2",
-    img: "./images/d6bf0c928b5a.jpg"
+    img: `${image3}`,
   },
   {
     id: 3,
     altText: "Slide 3",
     img:
-      "https://www.instagram.com/static/images/homepage/screenshot3.jpg/f0c687aa6ec2.jpg"
+      "https://www.instagram.com/static/images/homepage/screenshot3.jpg/f0c687aa6ec2.jpg",
   },
   {
     id: 4,
     altText: "Slide 3",
     img:
-      "https://www.instagram.com/static/images/homepage/screenshot4.jpg/842fe5699220.jpg"
-  }
+      "https://www.instagram.com/static/images/homepage/screenshot4.jpg/842fe5699220.jpg",
+  },
 ];
 
 const Slider = (props) => {
