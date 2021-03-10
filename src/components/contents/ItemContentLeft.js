@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./css/contentLeft.css";
+import { Asset1, Asset2, Asset6, Asset7 } from "../../assets/images/index.js";
 import { Link } from "react-router-dom";
 import configs from "../../configs";
 import {
@@ -11,7 +12,7 @@ import {
   CardFooter,
   CardSubtitle,
   Nav,
-  Form
+  Form,
 } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
@@ -25,12 +26,12 @@ export default function ItemContentLeft({
     totalComment,
     content,
     likes,
-    comments = []
+    comments = [],
   },
   likePost,
   commentPost,
   showComments,
-  removeComment
+  removeComment,
 }) {
   const userData = JSON.parse(localStorage.getItem("user"));
   const [comment, setComment] = useState("");
@@ -71,18 +72,18 @@ export default function ItemContentLeft({
             href="/"
           >
             {likes.includes(userData._id) ? (
-              <img src="../svg/Asset1.svg" alt="home" width="25" height="25" />
+              <img src={Asset1} alt="like" width="25" height="25" />
             ) : (
-              <img src="../svg/Asset2.svg" alt="home" width="25" height="25" />
+              <img src={Asset2} alt="unlike" width="25" height="25" />
             )}
           </a>
 
           <Link className="nav-link" to="/">
-            <img src="../svg/Asset7.svg" alt="home" width="25" height="25" />
+            <img src={Asset7} alt="comment" width="25" height="25" />
           </Link>
 
           <Link className="nav-link" to="/">
-            <img src="../svg/Asset6.svg" alt="home" width="25" height="25" />
+            <img src={Asset6} alt="message" width="25" height="25" />
           </Link>
         </Nav>
         <CardSubtitle tag="h6" className="mb-2">

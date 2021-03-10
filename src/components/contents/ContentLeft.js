@@ -33,6 +33,7 @@ export default function ContentLeft() {
             post.likes = res.post.likes;
             post.totalLike = res.post.totalLike;
           }
+          return post;
         });
 
         setPosts(clonePost);
@@ -75,6 +76,7 @@ export default function ContentLeft() {
           x.comments.push(res.comment);
           // console.log(res.comment);
         }
+        return x;
       });
       setPosts(clonePost);
     } catch (error) {
@@ -90,6 +92,7 @@ export default function ContentLeft() {
         x.comments = [];
         x.comments = res.comments;
       }
+      return x;
     });
 
     setPosts(clonePost);
@@ -113,6 +116,7 @@ export default function ContentLeft() {
 
             x.comments = comments;
           }
+          return x;
         });
         setPosts(clonePost);
       }

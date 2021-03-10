@@ -28,7 +28,7 @@ export default function Profile({ match }) {
     } else {
       setUserProfile(user);
     }
-  }, []);
+  }, [match.params.username, user]);
 
   // const follow = async (idUser) => {
   //   try {
