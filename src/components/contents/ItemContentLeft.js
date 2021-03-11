@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./css/contentLeft.css";
 import { Asset1, Asset2, Asset6, Asset7 } from "../../assets/images/index.js";
 import { Link } from "react-router-dom";
-import configs from "../../configs";
+// import configs from "../../configs";
 import {
   Card,
   CardImg,
@@ -45,12 +45,7 @@ export default function ItemContentLeft({
   return (
     <Card className="mb-4">
       <CardHeader className="content-left-top text-muted">
-        <img
-          className="avatar-left"
-          alt="ok"
-          src={user.avatar}
-          // src={`https://1q6gt.sse.codesandbox.io/uploads/${user.avatar}`}
-        />
+        <img className="avatar-left" alt="ok" src={user.avatar} />
         <Link to={`${user.user}/profile`}>
           <p className="title">{user.user}</p>
         </Link>
@@ -58,7 +53,8 @@ export default function ItemContentLeft({
       <CardImg
         top
         width="100%"
-        src={`${configs.IMAGE_URL}/${image}`}
+        src={`${image}`}
+        //`${configs.IMAGE_URL}/${image}`
         alt="image"
       />
       <CardBody>
