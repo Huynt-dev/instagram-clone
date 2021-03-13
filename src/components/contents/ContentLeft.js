@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 // import { useHistory } from "react-router-dom";
+import InfiniteScroll from "react-infinite-scroll-component";
 import { ItemContentLeft } from "../contents";
 import "./css/contentLeft.css";
 import { CreatePost } from "../createPost";
@@ -7,12 +8,12 @@ import callApi from "../../helpers/axios";
 
 export default function ContentLeft() {
   const [posts, setPosts] = useState([]);
-  // const history = useHistory();
+  const [page, setPage] = useState(3);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await callApi.get("/posts");
+        const res = await callApi.get(`/posts/?limit=${page}`);
         setPosts(res.posts);
       } catch (error) {
         console.log("error", error);
@@ -20,7 +21,7 @@ export default function ContentLeft() {
     };
 
     fetchData();
-  }, []);
+  }, [page]);
 
   const handleLikePost = (postId) => {
     const handleLike = async () => {
@@ -125,22 +126,33 @@ export default function ContentLeft() {
     }
   };
 
+  const fetchMoreData = async () => {
+    setTimeout(() => {
+      setPage(page + 1);
+    }, 300);
+  };
+
   return (
     <div className="content-left">
       <CreatePost createPost={handleCreatePost} />
-      {posts.map((post) => {
-        // console.log(post);
-        return (
-          <ItemContentLeft
-            key={post._id}
-            data={post}
-            likePost={handleLikePost}
-            commentPost={handleComment}
-            showComments={showComments}
-            removeComment={removeComment}
-          />
-        );
-      })}
+      <InfiniteScroll
+        dataLength={posts.length}
+        next={fetchMoreData}
+        hasMore={true}
+      >
+        {posts.map((post) => {
+          return (
+            <ItemContentLeft
+              key={post._id}
+              data={post}
+              likePost={handleLikePost}
+              commentPost={handleComment}
+              showComments={showComments}
+              removeComment={removeComment}
+            />
+          );
+        })}
+      </InfiniteScroll>
     </div>
   );
 }
