@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import classnames from "classnames";
+import { android, ios, image1 } from "../../assets/images/index.js";
 import {
   TabContent,
   TabPane,
@@ -80,7 +81,7 @@ function Content({ posts }) {
             </Row>
           ) : (
             <div className="contentTab">
-              <img className="imagesTab" src="../images/2.jpg" alt="ok" />
+              <img className="imagesTab" src={image1} alt="ok" />
 
               <div className="textInfo">
                 <div className="textInfoCenter">
@@ -91,16 +92,8 @@ function Content({ posts }) {
                     Tải ứng dụng để chia sẻ ảnh hoặc video đầu tiên của bạn.
                   </p>
                   <div className="mt-2">
-                    <img
-                      className="img-download"
-                      alt="ok"
-                      src="../images/ios.png"
-                    />
-                    <img
-                      className="img-download"
-                      alt="ok"
-                      src="../images/android.png"
-                    />
+                    <img className="img-download" alt="ok" src={ios} />
+                    <img className="img-download" alt="ok" src={android} />
                   </div>
                 </div>
               </div>
