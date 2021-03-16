@@ -7,11 +7,10 @@ import {
   NavItem,
   NavLink,
   Row,
-  Col
+  Col,
 } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCog } from "@fortawesome/free-solid-svg-icons";
-import configs from "../../configs";
 
 function Content({ posts }) {
   const [activeTab, setActiveTab] = useState("1");
@@ -74,11 +73,7 @@ function Content({ posts }) {
               {posts.map((x) => {
                 return (
                   <Col className="box-image" sm="4" key={x._id}>
-                    <img
-                      className="image-box"
-                      src={`${configs.IMAGE_URL}/${x.image}`}
-                      alt="ok"
-                    />
+                    <img className="image-box" src={`${x.image}`} alt="ok" />
                   </Col>
                 );
               })}
