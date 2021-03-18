@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 // import { useHistory } from "react-router-dom";
-import { Spinner } from "reactstrap";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { ItemContentLeft } from "../contents";
 import "./css/contentLeft.css";
@@ -145,7 +144,7 @@ export default function ContentLeft() {
         dataLength={posts.length}
         next={fetchMoreData}
         hasMore={hasMore}
-        loader={<Spinner color="primary" />}
+        loader={<h4>Loading...</h4>}
       >
         {posts.map((post) => {
           return (
