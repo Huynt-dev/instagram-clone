@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 // import { useHistory } from "react-router-dom";
+import { Spinner } from "reactstrap";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { ItemContentLeft } from "../contents";
 import "./css/contentLeft.css";
@@ -8,12 +9,14 @@ import callApi from "../../helpers/axios";
 
 export default function ContentLeft() {
   const [posts, setPosts] = useState([]);
-  const [page, setPage] = useState(3);
+  const [page, setPage] = useState(1);
+  const limit = 2;
+  const [hasMore, setHasMore] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await callApi.get(`/posts/?limit=${page}`);
+        const res = await callApi.get(`/posts`);
         setPosts(res.posts);
       } catch (error) {
         console.log("error", error);
@@ -21,7 +24,7 @@ export default function ContentLeft() {
     };
 
     fetchData();
-  }, [page]);
+  }, []);
 
   const handleLikePost = (postId) => {
     const handleLike = async () => {
@@ -127,9 +130,12 @@ export default function ContentLeft() {
   };
 
   const fetchMoreData = async () => {
-    setTimeout(() => {
-      setPage(page + 1);
-    }, 300);
+    setPage(page + 1);
+    const res = await callApi.get(`/posts/more/?limit=${limit}&page=${page}`);
+    setPosts(posts.concat(res.posts));
+    if (res.posts.length < limit) {
+      setHasMore(false);
+    }
   };
 
   return (
@@ -138,7 +144,8 @@ export default function ContentLeft() {
       <InfiniteScroll
         dataLength={posts.length}
         next={fetchMoreData}
-        hasMore={true}
+        hasMore={hasMore}
+        loader={<Spinner color="primary" />}
       >
         {posts.map((post) => {
           return (
